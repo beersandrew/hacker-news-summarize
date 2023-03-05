@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+  <title>OpenAI Quickstart</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='dog.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
+  <h3>Name my pet</h3>
+  <form action="/" method="post">
+    <input type="text" name="animal" placeholder="Enter a url" required />
+    <input type="submit" value="Summarize!" />
+  </form>
+  {% if articles %}
+  <div class="result">
+      <ul>
+<!-- For loop logic of jinja template -->
+        {%for i in range(0, len)%}
+
+            <h2>Title: {{articles[i]['Title']}}</h2>
+            <p>Summary: {{articles[i]['Summary']}}</p>
+            <p>Long Summary: {{articles[i]['LongSummary']}}</p>
+        {%endfor%}
+
+      </ul>
+  </div>
+  {% endif %}
+</body>
